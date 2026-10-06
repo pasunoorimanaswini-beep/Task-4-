@@ -1,0 +1,164 @@
+/* =========================================================
+   Brewhouse Roasters – responsive stylesheet
+   Part 1: original desktop layout (fixed widths, as in the "before" page)
+   Part 2: media queries that make it mobile-friendly
+   ========================================================= */
+
+:root {
+  --teal: #12403F;
+  --teal-dark: #0A2B2A;
+  --amber: #F2A900;
+  --paper: #F7F9F9;
+  --tint: #E8EFEE;
+  --ink: #1B2626;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 1rem;           /* rem: scales with the user's font setting */
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* Step 8: images scale within their containers */
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 .75rem; }
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+p  { margin: 0 0 1rem; }
+
+/* ---------- Desktop layout ---------- */
+
+/* Step 2 – fixed width element #1 */
+.container { width: 1100px; margin: 0 auto; }
+
+.site-header { background: var(--teal); color: var(--paper); }
+.nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+.logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+.main-nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+.main-nav a { text-decoration: none; padding: .25rem 0; }
+.main-nav a:hover, .main-nav a:focus-visible { border-bottom: 2px solid var(--amber); }
+.nav-toggle { display: none; }
+
+.hero { background: var(--teal); color: var(--paper); padding: 4rem 0; }
+.hero-inner { display: flex; align-items: center; justify-content: space-between; }
+/* fixed width elements #2 and #3 */
+.hero-text { width: 520px; }
+.hero-inner img { width: 480px; }
+.hero p { font-size: 1.2rem; }
+
+.btn {
+  display: inline-block;
+  background: var(--amber);
+  color: var(--teal-dark);
+  font: inherit;
+  font-weight: 600;
+  padding: .75rem 1.5rem;
+  border: 0;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(.95); }
+.btn:focus-visible, a:focus-visible, button:focus-visible,
+input:focus-visible, textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+.section { padding: 4rem 0; }
+.section.alt { background: var(--tint); }
+
+.columns { display: flex; justify-content: space-between; gap: 2rem; }
+/* fixed width elements #4 and #5 */
+.columns.three .card { width: 340px; }
+.columns.two .col { width: 530px; }
+
+.card { background: #fff; padding: 1.5rem; border-radius: 8px; border: 1px solid #D5E0DF; }
+
+/* Prices table */
+.table-wrap { width: 1100px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { text-align: left; padding: .75rem 1rem; border-bottom: 1px solid #D5E0DF; white-space: nowrap; }
+th { background: var(--teal); color: var(--paper); }
+
+/* Contact form */
+.contact-form { width: 600px; display: grid; gap: .5rem; }
+.contact-form input, .contact-form textarea {
+  width: 100%; font: inherit; padding: .65rem; border: 1px solid #9FB3B1; border-radius: 6px;
+}
+.contact-form .btn { justify-self: start; margin-top: .5rem; }
+
+.site-footer { background: var(--teal-dark); color: var(--paper); padding: 3rem 0; }
+.footer-cols { display: flex; justify-content: space-between; }
+.footer-cols > div { width: 250px; }
+.footer-cols h4 { font-size: 1.1rem; }
+
+/* =========================================================
+   Part 2 – MEDIA QUERIES
+   ========================================================= */
+
+/* Step 3 & 4: tablets and phones (max-width: 768px) */
+@media (max-width: 768px) {
+
+  /* Fluid container instead of 1100px; side padding keeps text off the screen edge */
+  .container { width: 100%; padding-left: 1rem; padding-right: 1rem; }
+
+  /* Step 4: smaller type */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  .hero p { font-size: 1.05rem; }
+  .hero { padding: 2.5rem 0; }
+  .section { padding: 2.5rem 0; }
+
+  /* Step 5: nav collapses behind a Menu button and stacks vertically */
+  .nav-bar { flex-wrap: wrap; }
+  .nav-toggle {
+    display: block;
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--paper);
+    border-radius: 6px;
+    padding: .5rem 1rem;
+    font: inherit;
+    cursor: pointer;
+  }
+  .main-nav { display: none; width: 100%; }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; gap: 0; padding-top: .75rem; }
+  .main-nav a { display: block; padding: .85rem 0; border-top: 1px solid rgba(255,255,255,.2); }
+
+  /* Step 4: stack columns vertically */
+  .hero-inner { flex-direction: column; text-align: left; align-items: stretch; gap: 2rem; }
+  .hero-text, .hero-inner img { width: 100%; }   /* fixed px -> % */
+  .columns { flex-direction: column; gap: 1rem; }
+  .columns.three .card, .columns.two .col { width: 100%; }
+
+  /* Step 7: tables scroll inside their own box, not the whole page */
+  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  .contact-form { width: 100%; }
+  .contact-form .btn { justify-self: stretch; text-align: center; }
+  .btn { padding: .9rem 1.5rem; }                /* comfortable tap target */
+
+  .footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .footer-cols > div { width: 100%; }
+}
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+  h1 { font-size: 1.65rem; }
+  .logo { font-size: 1.25rem; }
+  .footer-cols { grid-template-columns: 1fr; }
+  .hero .btn { display: block; text-align: center; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

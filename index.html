@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport meta tag: without it, phones render the page at ~980px wide and media queries never trigger -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewhouse Roasters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#" class="logo">Brewhouse</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menu</button>
+      <nav id="mainNav" class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#prices">Prices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Fresh-roasted coffee, delivered in three days</h1>
+          <p>Small-batch beans from Indian estates, roasted every Monday and shipped to your door.</p>
+          <a href="#prices" class="btn">See the prices</a>
+        </div>
+        <img src="images/hero.svg" width="480" height="360" alt="A steaming cup of coffee">
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <h2>Why people switch to us</h2>
+        <div class="columns three">
+          <article class="card">
+            <h3>Roasted to order</h3>
+            <p>Nothing sits on a shelf. Your beans are roasted the week you order them.</p>
+          </article>
+          <article class="card">
+            <h3>Direct from growers</h3>
+            <p>We buy from farms in Coorg, Chikmagalur and the Araku valley, and pay above market rate.</p>
+          </article>
+          <article class="card">
+            <h3>Pause any time</h3>
+            <p>Skip a delivery or cancel in two clicks. No emails, no phone calls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="container columns two">
+        <div class="col">
+          <h2>Our story</h2>
+          <p>Brewhouse started in a garage in Hyderabad with a second-hand roaster and a stubborn idea: coffee should taste like the day it was roasted.</p>
+        </div>
+        <div class="col">
+          <h2>How we roast</h2>
+          <p>Every batch is cupped before it ships. If it does not score well, we do not sell it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prices">
+      <div class="container">
+        <h2>Prices</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Blend</th><th>Origin</th><th>Roast</th><th>Notes</th><th>250 g</th><th>1 kg</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Morning Ghat</td><td>Chikmagalur</td><td>Medium</td><td>Chocolate, toasted nut</td><td>₹420</td><td>₹1,500</td></tr>
+              <tr><td>Coorg Dark</td><td>Coorg</td><td>Dark</td><td>Smoky, bold</td><td>₹450</td><td>₹1,600</td></tr>
+              <tr><td>Araku Light</td><td>Araku</td><td>Light</td><td>Citrus, floral</td><td>₹480</td><td>₹1,750</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container">
+        <h2>Get in touch</h2>
+        <form class="contact-form" action="#" method="post">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+          <label for="msg">Message</label>
+          <textarea id="msg" name="msg" rows="4"></textarea>
+          <button type="submit" class="btn">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-cols">
+      <div><h4>Brewhouse</h4><p>Roasted in Hyderabad.</p></div>
+      <div><h4>Shop</h4><p>Blends<br>Subscriptions<br>Gift cards</p></div>
+      <div><h4>Help</h4><p>Shipping<br>Returns<br>FAQ</p></div>
+      <div><h4>Follow</h4><p>Instagram<br>YouTube</p></div>
+    </div>
+  </footer>
+
+  <script>
+    // Collapsible nav for mobile
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
